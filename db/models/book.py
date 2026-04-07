@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, ForeignKey, Date, Table
 from sqlalchemy.orm import relationship
-from database import Base
+from db.base import Base
 
 # 书籍和作者的多对多关系表
 book_author = Table('book_author', Base.metadata,
@@ -8,7 +8,9 @@ book_author = Table('book_author', Base.metadata,
     Column('author_id', Integer, ForeignKey('authors.id'), primary_key=True)
 )
 
+
 class Book(Base):
+    """书籍模型"""
     __tablename__ = "books"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -25,7 +27,9 @@ class Book(Base):
     authors = relationship("Author", secondary=book_author, back_populates="books")
     ratings = relationship("Rating", back_populates="book")
 
+
 class Author(Base):
+    """作者模型"""
     __tablename__ = "authors"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -35,18 +39,9 @@ class Author(Base):
     # 关系
     books = relationship("Book", secondary=book_author, back_populates="authors")
 
-class User(Base):
-    __tablename__ = "users"
-
-    id = Column(Integer, primary_key=True, index=True)
-    username = Column(String, unique=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
-
-    # 关系
-    ratings = relationship("Rating", back_populates="user")
 
 class Rating(Base):
+    """评分模型"""
     __tablename__ = "ratings"
 
     id = Column(Integer, primary_key=True, index=True)

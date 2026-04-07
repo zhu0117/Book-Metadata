@@ -8,15 +8,20 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import string
 
-# 下载NLTK资源
-nltk.download('stopwords', quiet=True)
-nltk.download('wordnet', quiet=True)
-
 class RecommendationEngine:
     def __init__(self, db: Session):
         self.db = db
-        self.lemmatizer = WordNetLemmatizer()
-        self.stop_words = set(stopwords.words('english'))
+        # 延迟下载NLTK资源，避免启动时的权限问题
+        try:
+            nltk.download('stopwords', quiet=True)
+            nltk.download('wordnet', quiet=True)
+            self.lemmatizer = WordNetLemmatizer()
+            self.stop_words = set(stopwords.words('english'))
+        except Exception as e:
+            print(f"Warning: NLTK data download failed: {e}")
+            # 使用备用方法
+            self.lemmatizer = None
+            self.stop_words = set()
     
     def preprocess_text(self, text: str) -> str:
         """预处理文本，用于内容相似度计算"""
@@ -32,8 +37,9 @@ class RecommendationEngine:
         # 分词
         words = text.split()
         
-        # 移除停用词并进行词形还原
-        words = [self.lemmatizer.lemmatize(word) for word in words if word not in self.stop_words]
+        # 移除停用词并进行词形还原（如果NLTK资源可用）
+        if self.lemmatizer and self.stop_words:
+            words = [self.lemmatizer.lemmatize(word) for word in words if word not in self.stop_words]
         
         return ' '.join(words)
     
