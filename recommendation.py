@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
-from models import Book, Author, User, Rating
+from db.models.book import Book, Author, Rating
+from db.models.user import User
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np

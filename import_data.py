@@ -1,8 +1,10 @@
 import requests
 import json
 from sqlalchemy.orm import Session
-from database import SessionLocal, engine, Base
-from models import Book, Author, User, Rating
+from db.session import SessionLocal, engine
+from db.base import Base
+from db.models.book import Book, Author, Rating
+from db.models.user import User
 from datetime import datetime
 
 # 创建数据库表
