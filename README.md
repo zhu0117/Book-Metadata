@@ -2,11 +2,11 @@
 
 ## 项目概述
 
-这是一个使用FastAPI框架开发的书籍元数据和推荐API，提供以下功能：
+这是一个使用FastAPI框架开发的书籍元数据管理API，提供以下功能：
 
 - 书籍的CRUD操作（创建、读取、更新、删除）
-- 用户管理和评分系统
-- 基于用户评分和作者相似度的书籍推荐
+- 用户管理和认证系统
+- 用户评分功能
 - 自动生成的API文档
 
 ## 技术栈
@@ -50,7 +50,6 @@
 - `GET /api/books/{book_id}` - 获取书籍详情
 - `PUT /api/books/{book_id}` - 更新书籍信息
 - `DELETE /api/books/{book_id}` - 删除书籍
-- `GET /api/books/recommendations/{user_id}` - 获取书籍推荐
 
 ### 用户相关
 - `GET /api/users/` - 获取用户列表
@@ -68,11 +67,7 @@
 
 ## 测试数据
 
-运行 `import_data.py` 脚本会自动创建以下测试数据：
-
-- 2个测试用户: user1, user2
-- 测试评分数据
-- 注意：由于Google Books API的请求限制，可能无法获取书籍数据，但用户和评分数据会正常创建
+运行 `import_data.py` 脚本会自动创建示例数据，包括测试用户和书籍信息。
 
 ## 环境变量
 
@@ -115,10 +110,9 @@
 | `id` | Integer | PK, 索引 | 书籍唯一标识符 |
 | `title` | String | 索引 | 书籍标题 |
 | `isbn` | String | **唯一** | 国际标准书号 |
-| `publication_date` | Date | - | 出版日期 |
-| `publisher` | String | - | 出版社名称 |
-| `description` | String | - | 书籍描述 |
+| `publication_year` | Integer | - | 出版年份 |
 | `cover_url` | String | - | 封面图片URL |
+| `language_code` | String | - | 语言代码 (如 en, en-US) |
 | `average_rating` | Float | 默认0.0 | 平均评分 |
 | `rating_count` | Integer | 默认0 | 评分次数 |
 
@@ -128,7 +122,6 @@
 |------|------|------|------|
 | `id` | Integer | PK, 索引 | 作者唯一标识符 |
 | `name` | String | 索引 | 作者姓名 |
-| `bio` | String | - | 作者简介 |
 
 ### book_author（书籍-作者关联表）
 
@@ -155,8 +148,12 @@
 | `book_id` | Integer | FK | 被评书籍ID |
 | `rating` | Float | - | 评分值(1.0-5.0) |
 
-## 表关系说明
+## 数据来源
 
-- **Book ↔ Author**: 多对多关系（一本书可有多个作者，一个作者可写多本书）
-- **User → Rating**: 一对多关系（一个用户可给多本书评分）
-- **Book → Rating**: 一对多关系（一本书可被多个用户评分）
+本项目使用 [GoodBooks-10K](https://github.com/zygmuntz/goodbooks-10k) 数据集，包含 10,000 本最受欢迎书籍的元数据、评分和标签信息。
+
+运行以下命令导入数据：
+```bash
+python import_data.py        # 导入用户
+python import_books_from_csv.py  # 导入书籍
+```

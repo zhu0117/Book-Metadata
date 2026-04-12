@@ -24,10 +24,9 @@ async def create_book(
     db_book = Book(
         title=book.title,
         isbn=book.isbn,
-        publication_date=book.publication_date,
-        publisher=book.publisher,
-        description=book.description,
-        cover_url=book.cover_url
+        publication_year=book.publication_year,
+        cover_url=book.cover_url,
+        language_code=book.language_code
     )
 
     for author_id in book.author_ids:
@@ -48,7 +47,7 @@ async def get_books(
     page: int = 1,
     title: Optional[str] = None,
     author: Optional[str] = None,
-    publisher: Optional[str] = None,
+    language: Optional[str] = None,
     sort_by: Optional[str] = "id",
     sort_order: Optional[str] = "asc",
     db: Session = Depends(get_db)
@@ -62,8 +61,8 @@ async def get_books(
     if author:
         query = query.join(Book.authors).filter(Author.name.ilike(f"%{author}%"))
 
-    if publisher:
-        query = query.filter(Book.publisher.ilike(f"%{publisher}%"))
+    if language:
+        query = query.filter(Book.language_code == language)
 
     sort_column = getattr(Book, sort_by, Book.id)
     if sort_order == "desc":
