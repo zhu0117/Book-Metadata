@@ -13,6 +13,7 @@
 - RESTful API for managing book metadata
 - User authentication and authorization system
 - Rating functionality for books
+- Book recommendation system (popular, author-based, collaborative filtering)
 - Built with FastAPI and SQLAlchemy
 
 ## Slide 3: Technical Stack
@@ -65,6 +66,12 @@
 - `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login and get token
 
+**Recommendations Endpoints:**
+- `GET /recommendations/popular` - Popular books
+- `GET /recommendations/authors/{id}` - Author-based
+- `GET /recommendations/collaborative/{id}` - Collaborative filtering
+- `GET /recommendations/hybrid/{id}` - Hybrid approach
+
 ## Slide 6: Data Models
 
 **Core Entities:**
@@ -110,15 +117,34 @@
 - Secure password storage
 - JWT token authentication
 
-## Slide 10: Conclusion
+## Slide 10: Recommendation System
+
+**Algorithms Implemented:**
+
+1. **Popular Books**
+   - Based on rating count and average rating
+   - Reliable, always returns results
+
+2. **Author-Based**
+   - Recommends books by authors user liked
+   - Personalized based on reading history
+
+3. **Collaborative Filtering**
+   - User-based similarity using Pearson correlation
+   - Finds similar users and recommends their favorites
+
+**Hybrid Approach:** Combines multiple strategies for better recommendations
+
+## Slide 11: Conclusion
 
 **Key Achievements:**
 - Fully functional RESTful API
 - Clean, modular architecture
 - Comprehensive documentation
 - Secure authentication
+- Book recommendation system with multiple algorithms
 
-## Slide 11: Q&A
+## Slide 12: Q&A
 
 **Title:** Questions & Answers
 **Contact Information:** [Your Email / GitHub]

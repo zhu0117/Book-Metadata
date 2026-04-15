@@ -1,8 +1,8 @@
-from db.schemas.book import Book, BookCreate, BookUpdate, Author, AuthorCreate, Rating, RatingCreate, BookList
+from db.schemas.book import Book, BookCreate, BookUpdate, Author, AuthorCreate, Rating, RatingCreate, BookList, BookRecommendation
 from db.schemas.user import User, UserCreate, UserLogin, Token, TokenData
 
 __all__ = [
     "Book", "BookCreate", "BookUpdate", "Author", "AuthorCreate",
-    "Rating", "RatingCreate", "BookList",
+    "Rating", "RatingCreate", "BookList", "BookRecommendation",
     "User", "UserCreate", "UserLogin", "Token", "TokenData"
 ]

@@ -71,3 +71,21 @@ class BookList(BaseModel):
     page: int
     size: int
     pages: int
+
+
+class BookRecommendation(BaseModel):
+    id: int
+    title: str
+    isbn: str
+    publication_year: Optional[int] = None
+    cover_url: Optional[str] = None
+    language_code: Optional[str] = None
+    average_rating: float
+    rating_count: int
+    authors: List[Author] = []
+    similar_user: str
+    similarity_score: float
+    rating_from_similar_user: float
+
+    class Config:
+        from_attributes = True

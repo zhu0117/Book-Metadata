@@ -63,6 +63,7 @@ The Book Metadata API is a RESTful API designed to manage book metadata, user au
 - **Books Endpoints**: CRUD operations for books with filtering and searching
 - **Auth Endpoints**: User registration and JWT authentication
 - **Rating Endpoints**: User ratings for books
+- **Recommendation Endpoints**: Popular books, author-based, and collaborative filtering
 
 #### Data Models
 - **Book**: Stores book metadata and author relationships
@@ -156,31 +157,69 @@ The Book Metadata API is a RESTful API designed to manage book metadata, user au
 - **pytest**: Unit testing framework
 - **TestClient**: API endpoint testing
 
-## 8. Future Development
+## 8. Recommendation System
 
-### 8.1 Planned Features
+### 8.1 Algorithm Overview
 
-- Book recommendation system
+The recommendation system implements three recommendation strategies:
+
+1. **Popular Books Recommendation**
+   - Filters books by minimum rating count
+   - Sorts by average rating and rating count
+   - Returns highly-rated books with sufficient user engagement
+
+2. **Author-Based Recommendation**
+   - Analyzes user's rated books to identify preferred authors
+   - Recommends other books by the same authors
+   - Excludes books the user has already rated
+
+3. **Collaborative Filtering**
+   - Implements user-based collaborative filtering using Pearson correlation coefficient
+   - Finds similar users based on rating patterns
+   - Recommends books liked by similar users that the target user hasn't rated
+
+### 8.2 Similarity Calculation
+
+The system uses Pearson correlation coefficient to measure user similarity:
+
+```
+r = Σ((x_i - x̄)(y_i - ȳ)) / √(Σ(x_i - x̄)² × Σ(y_i - ȳ)²)
+```
+
+Where:
+- x_i and y_i are ratings given by two users for the same book
+- x̄ and ȳ are the mean ratings of each user
+
+### 8.3 Hybrid Approach
+
+The hybrid recommendation combines popular books and author-based recommendations to provide diverse, high-quality suggestions.
+
+## 9. Future Development
+
+### 9.1 Planned Features
+
+- [x] Book recommendation system (Implemented)
 - AI-powered book analysis
 - Enhanced search functionality
 - User profile management
 
-### 8.2 Technical Roadmap
+### 9.2 Technical Roadmap
 
-1. Add recommendation algorithms
+1. [x] Add recommendation algorithms (Implemented)
 2. Integrate AI analysis features
 3. Implement advanced search
 4. Add social features
 
-## 9. Conclusion
+## 10. Conclusion
 
 The Book Metadata API provides a solid foundation for book management with:
 - Clean, modular architecture
 - Secure authentication
 - Comprehensive documentation
 - Extensible design for future features
+- [x] Book recommendation system with multiple algorithms
 
-## 10. References
+## 11. References
 
 - FastAPI: https://fastapi.tiangolo.com/
 - SQLAlchemy: https://docs.sqlalchemy.org/

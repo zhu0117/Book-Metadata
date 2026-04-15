@@ -1,3 +1,3 @@
-from api.endpoints import auth, books
+from api.endpoints import auth, books, ratings, recommendations
 
-__all__ = ["auth", "books"]
+__all__ = ["auth", "books", "ratings", "recommendations"]

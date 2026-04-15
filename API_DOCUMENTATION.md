@@ -172,6 +172,40 @@ Header: `Authorization: Bearer <token>`
 }
 ```
 
+### Recommendations
+
+#### Get Popular Books
+```
+GET /recommendations/popular
+```
+Parameters:
+- `limit` (int, default: 10)
+- `min_rating_count` (int, default: 3)
+
+#### Get Author-Based Recommendations
+```
+GET /recommendations/authors/{user_id}
+```
+Parameters:
+- `user_id` (int, required)
+- `limit` (int, default: 10)
+
+#### Get Collaborative Filtering Recommendations
+```
+GET /recommendations/collaborative/{user_id}
+```
+Parameters:
+- `user_id` (int, required)
+- `limit` (int, default: 10)
+
+#### Get Hybrid Recommendations
+```
+GET /recommendations/hybrid/{user_id}
+```
+Parameters:
+- `user_id` (int, required)
+- `limit` (int, default: 10)
+
 ## Data Models
 
 ### Book

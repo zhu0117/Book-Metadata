@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from core.config import settings
 from db.init_db import init_db
-from api.endpoints import auth, books
+from api.endpoints import auth, books, ratings, recommendations
 
 # 初始化数据库
 init_db()
@@ -27,6 +27,8 @@ app.add_middleware(
 # 注册路由
 app.include_router(auth.router)
 app.include_router(books.router)
+app.include_router(ratings.router)
+app.include_router(recommendations.router)
 
 
 @app.get("/")

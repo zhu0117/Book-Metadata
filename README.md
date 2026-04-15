@@ -7,6 +7,7 @@
 - 书籍的CRUD操作（创建、读取、更新、删除）
 - 用户管理和认证系统
 - 用户评分功能
+- 书籍推荐系统（热门推荐、作者推荐、协同过滤）
 - 自动生成的API文档
 
 ## 技术栈
@@ -64,6 +65,12 @@
 - `GET /api/ratings/{rating_id}` - 获取评分详情
 - `PUT /api/ratings/{rating_id}` - 更新评分
 - `DELETE /api/ratings/{rating_id}` - 删除评分
+
+### 推荐相关
+- `GET /recommendations/popular` - 获取热门书籍推荐
+- `GET /recommendations/authors/{user_id}` - 基于作者推荐
+- `GET /recommendations/collaborative/{user_id}` - 协同过滤推荐
+- `GET /recommendations/hybrid/{user_id}` - 混合推荐
 
 ## 测试数据
 
@@ -156,4 +163,5 @@
 ```bash
 python import_data.py        # 导入用户
 python import_books_from_csv.py  # 导入书籍
+python generate_test_ratings.py  # 生成测试评分数据
 ```
