@@ -214,50 +214,61 @@ The hybrid recommendation combines popular books and author-based recommendation
 
 ### 10.1 Tools Used
 
-- **Microsoft Copilot**: Used for code generation, debugging assistance, and architectural design discussions
+- **Microsoft Copilot**: Used for dataset analysis, data model design assistance, and API framework guidance
 - **ChatGPT**: Used for technical documentation writing and best practice recommendations
 
 ### 10.2 Usage Scenarios
 
-1. **Code Generation**:
-   - Generated initial API endpoint structures
-   - Created data model templates and schema definitions
-   - Provided authentication and security implementation examples
+1. **Dataset Search and Analysis**:
+   - Assisted in finding and analyzing the GoodBooks-10K dataset
+   - Helped with data preprocessing and cleaning strategies
+   - Provided insights on dataset structure and potential use cases
 
-2. **Debugging Assistance**:
-   - Helped identify and fix SQLAlchemy relationship issues
-   - Assisted with JWT token validation problems
-   - Provided solutions for database migration challenges
+2. **Data Model Design**:
+   - Supported the design of database schemas for books, authors, users, and ratings
+   - Assisted in defining relationships between entities
+   - Recommended best practices for data normalization
 
-3. **Architectural Design**:
-   - Discussed recommendation system algorithms
-   - Evaluated different authentication approaches
-   - Recommended project structure and organization
+3. **API Framework Development**:
+   - Provided guidance on RESTful API design principles
+   - Assisted in structuring the FastAPI application
+   - Recommended authentication and security approaches
 
-4. **Documentation**:
-   - Generated API documentation templates
-   - Provided technical report structure guidance
-   - Assisted with error handling documentation
+4. **Technical Research**:
+   - Helped understand recommendation system algorithms
+   - Provided information on Pearson correlation coefficient implementation
+   - Assisted with understanding JWT authentication concepts
 
-### 10.3 Benefits and Limitations
+### 10.3 Methodological Approach
+
+GenAI was used as a supplementary tool following a structured methodology:
+
+1. **Problem Identification**: Clearly defined project requirements and challenges
+2. **Research**: Used GenAI to gather information on relevant technologies
+3. **Validation**: Cross-checked AI-generated information with official documentation
+4. **Implementation**: Applied insights to develop custom solutions
+5. **Review**: Thoroughly tested and validated all implementations
+
+### 10.4 Benefits and Limitations
 
 **Benefits**:
-- Accelerated development process
-- Provided best practice recommendations
-- Helped overcome technical challenges
-- Improved code quality and documentation
+- Accelerated research and learning process
+- Provided valuable insights on dataset processing
+- Helped overcome technical knowledge gaps
+- Improved overall project structure and design
 
 **Limitations**:
-- Required manual verification of generated code
-- Sometimes provided outdated or incorrect solutions
-- Needed context-specific adjustments
+- Required critical evaluation of AI-generated suggestions
+- Needed context-specific adjustments for project requirements
+- Sometimes provided generic solutions that required customization
 
-### 10.4 Ethical Considerations
+### 10.5 Ethical Considerations
 
-All GenAI-generated content was thoroughly reviewed and modified as needed to ensure:
-- Originality and compliance with academic standards
-- Accuracy and reliability of implementation
-- Proper attribution where appropriate
+All GenAI-generated content was used responsibly:
+- Used as a research and learning tool, not a replacement for original work
+- All code and documentation were thoroughly reviewed and modified
+- Maintained academic integrity by ensuring original thought and implementation
+- Properly cited all external sources, including AI-assisted research
 
 ## 11. Conclusion
 
