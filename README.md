@@ -1,5 +1,13 @@
 # Book Metadata and Recommendation API
 
+## 项目链接
+
+- **GitHub 仓库**: [https://github.com/zhu0117/Book-Metadata.git](https://github.com/zhu0117/Book-Metadata.git)
+- **API 文档 (PDF)**: [待添加]
+- **技术报告 (PDF)**: [待添加]
+- **演示文稿 (PPTX)**: [待添加]
+- **部署地址**: [待添加 - PythonAnywhere]
+
 ## 项目概述
 
 这是一个使用FastAPI框架开发的书籍元数据管理API，提供以下功能：

@@ -210,7 +210,56 @@ The hybrid recommendation combines popular books and author-based recommendation
 3. Implement advanced search
 4. Add social features
 
-## 10. Conclusion
+## 10. GenAI Usage Declaration
+
+### 10.1 Tools Used
+
+- **Microsoft Copilot**: Used for code generation, debugging assistance, and architectural design discussions
+- **ChatGPT**: Used for technical documentation writing and best practice recommendations
+
+### 10.2 Usage Scenarios
+
+1. **Code Generation**:
+   - Generated initial API endpoint structures
+   - Created data model templates and schema definitions
+   - Provided authentication and security implementation examples
+
+2. **Debugging Assistance**:
+   - Helped identify and fix SQLAlchemy relationship issues
+   - Assisted with JWT token validation problems
+   - Provided solutions for database migration challenges
+
+3. **Architectural Design**:
+   - Discussed recommendation system algorithms
+   - Evaluated different authentication approaches
+   - Recommended project structure and organization
+
+4. **Documentation**:
+   - Generated API documentation templates
+   - Provided technical report structure guidance
+   - Assisted with error handling documentation
+
+### 10.3 Benefits and Limitations
+
+**Benefits**:
+- Accelerated development process
+- Provided best practice recommendations
+- Helped overcome technical challenges
+- Improved code quality and documentation
+
+**Limitations**:
+- Required manual verification of generated code
+- Sometimes provided outdated or incorrect solutions
+- Needed context-specific adjustments
+
+### 10.4 Ethical Considerations
+
+All GenAI-generated content was thoroughly reviewed and modified as needed to ensure:
+- Originality and compliance with academic standards
+- Accuracy and reliability of implementation
+- Proper attribution where appropriate
+
+## 11. Conclusion
 
 The Book Metadata API provides a solid foundation for book management with:
 - Clean, modular architecture
@@ -219,7 +268,7 @@ The Book Metadata API provides a solid foundation for book management with:
 - Extensible design for future features
 - [x] Book recommendation system with multiple algorithms
 
-## 11. References
+## 12. References
 
 - FastAPI: https://fastapi.tiangolo.com/
 - SQLAlchemy: https://docs.sqlalchemy.org/

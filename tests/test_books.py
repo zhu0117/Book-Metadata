@@ -84,9 +84,7 @@ def test_book(test_user, setup_database):
         json={
             "title": "Test Book",
             "isbn": "9781234567890",
-            "publication_date": "2023-01-01",
-            "publisher": "Test Publisher",
-            "description": "Test book description",
+            "publication_year": 2023,
             "cover_url": "https://example.com/cover.jpg",
             "author_ids": []
         }
@@ -156,9 +154,7 @@ def test_create_book(test_user):
         json={
             "title": "New Test Book",
             "isbn": "9780987654321",
-            "publication_date": "2023-02-01",
-            "publisher": "New Publisher",
-            "description": "New test book description",
+            "publication_year": 2023,
             "cover_url": "https://example.com/newcover.jpg",
             "author_ids": []
         }
@@ -192,13 +188,11 @@ def test_update_book(test_user, test_book):
         f"/api/books/{book_id}",
         headers={"Authorization": f"Bearer {test_user['token']}"},
         json={
-            "title": "Updated Test Book",
-            "description": "Updated test book description"
+            "title": "Updated Test Book"
         }
     )
     assert response.status_code == 200
     assert response.json()["title"] == "Updated Test Book"
-    assert response.json()["description"] == "Updated test book description"
 
 
 def test_delete_book(test_user, test_book):
@@ -218,6 +212,6 @@ def test_delete_book(test_user, test_book):
 
 def test_get_recommendations(setup_database):
     """测试获取推荐"""
-    response = client.get("/api/books/recommendations/1")
+    response = client.get("/recommendations/popular")
     assert response.status_code == 200
     assert isinstance(response.json(), list)
