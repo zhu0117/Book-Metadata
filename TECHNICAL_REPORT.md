@@ -325,7 +325,15 @@ The Book Metadata API provides a solid foundation for book management with:
 - Extensible design for future features
 - [x] Book recommendation system with multiple algorithms
 
-## 13. References
+## 13. Deployment Information
+
+The project has been successfully deployed to the Railway platform and can be accessed through the following addresses:
+
+- **Deployment URL**: https://book-metadata-production.up.railway.app
+- **API Documentation**: https://book-metadata-production.up.railway.app/docs
+- **ReDoc Documentation**: https://book-metadata-production.up.railway.app/redoc
+
+## 14. References
 
 - FastAPI: https://fastapi.tiangolo.com/
 - SQLAlchemy: https://docs.sqlalchemy.org/

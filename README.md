@@ -6,7 +6,7 @@
 - **API Documentation (PDF)**: [To be added]
 - **Technical Report (PDF)**: [To be added]
 - **Presentation Slides (PPTX)**: [To be added]
-- **Deployment URL**: [To be added - PythonAnywhere]
+- **Deployment URL**: https://book-metadata-production.up.railway.app
 
 ## Project Overview
 
