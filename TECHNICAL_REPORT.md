@@ -262,8 +262,13 @@ The GoodBooks-10K dataset is fully compliant for academic purposes because:
 
 - **Microsoft Copilot**: Used for dataset analysis, data model design assistance, and API framework guidance
 - **ChatGPT**: Used for technical documentation writing and best practice recommendations
+- **Doubao (豆包)**: Used for technology stack research and dataset recommendations
 
-### 11.2 Usage Scenarios
+### 11.2 Conversation Logs
+
+**Conversation Link**: [Recommended Book API Technology Stack - Doubao](https://www.doubao.com/thread/w99a7cf5c0c93f313)
+
+### 11.3 Usage Scenarios
 
 1. **Dataset Search and Analysis**:
    - Assisted in finding and analyzing the GoodBooks-10K dataset
@@ -285,7 +290,7 @@ The GoodBooks-10K dataset is fully compliant for academic purposes because:
    - Provided information on Pearson correlation coefficient implementation
    - Assisted with understanding JWT authentication concepts
 
-### 11.3 Methodological Approach
+### 11.4 Methodological Approach
 
 GenAI was used as a supplementary tool following a structured methodology:
 
@@ -295,7 +300,7 @@ GenAI was used as a supplementary tool following a structured methodology:
 4. **Implementation**: Applied insights to develop custom solutions
 5. **Review**: Thoroughly tested and validated all implementations
 
-### 11.4 Benefits and Limitations
+### 11.5 Benefits and Limitations
 
 **Benefits**:
 - Accelerated research and learning process
@@ -308,7 +313,7 @@ GenAI was used as a supplementary tool following a structured methodology:
 - Needed context-specific adjustments for project requirements
 - Sometimes provided generic solutions that required customization
 
-### 11.5 Ethical Considerations
+### 11.6 Ethical Considerations
 
 All GenAI-generated content was used responsibly:
 - Used as a research and learning tool, not a replacement for original work
