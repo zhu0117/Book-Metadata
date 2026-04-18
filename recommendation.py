@@ -128,17 +128,36 @@ class RecommendationEngine:
         return self.db.query(Rating).filter(Rating.user_id == user_id).all()
 
     def get_hybrid_recommendations(self, user_id: int, limit: int = 10) -> List[Book]:
-        """混合推荐：结合热门推荐和作者推荐"""
+        """混合推荐：结合热门推荐、作者推荐和协同过滤"""
         author_books = self.get_books_by_popular_authors(user_id=user_id, limit=limit)
         popular_books = self.get_popular_books(limit=limit, min_rating_count=3)
+        collaborative_books = []
+        
+        # 获取协同过滤推荐（只取书籍对象）
+        collaborative_recs = self.get_user_based_recommendations(user_id=user_id, limit=limit)
+        for rec in collaborative_recs:
+            collaborative_books.append(rec['book'])
 
         seen_ids = set()
         unique_books = []
+        
+        # 优先添加协同过滤推荐（个性化程度最高）
+        for book in collaborative_books:
+            if book.id not in seen_ids:
+                seen_ids.add(book.id)
+                unique_books.append(book)
+            if len(unique_books) >= limit:
+                break
+
+        # 然后添加作者推荐
         for book in author_books:
             if book.id not in seen_ids:
                 seen_ids.add(book.id)
                 unique_books.append(book)
+            if len(unique_books) >= limit:
+                break
 
+        # 最后添加热门推荐
         for book in popular_books:
             if book.id not in seen_ids:
                 seen_ids.add(book.id)

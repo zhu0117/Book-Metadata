@@ -1,175 +1,175 @@
 # Book Metadata and Recommendation API
 
-## 项目链接
+## Project Links
 
-- **GitHub 仓库**: [https://github.com/zhu0117/Book-Metadata.git](https://github.com/zhu0117/Book-Metadata.git)
-- **API 文档 (PDF)**: [待添加]
-- **技术报告 (PDF)**: [待添加]
-- **演示文稿 (PPTX)**: [待添加]
-- **部署地址**: [待添加 - PythonAnywhere]
+- **GitHub Repository**: [https://github.com/zhu0117/Book-Metadata.git](https://github.com/zhu0117/Book-Metadata.git)
+- **API Documentation (PDF)**: [To be added]
+- **Technical Report (PDF)**: [To be added]
+- **Presentation Slides (PPTX)**: [To be added]
+- **Deployment URL**: [To be added - PythonAnywhere]
 
-## 项目概述
+## Project Overview
 
-这是一个使用FastAPI框架开发的书籍元数据管理API，提供以下功能：
+This is a book metadata management API developed using FastAPI framework, providing the following features:
 
-- 书籍的CRUD操作（创建、读取、更新、删除）
-- 用户管理和认证系统
-- 用户评分功能
-- 书籍推荐系统（热门推荐、作者推荐、协同过滤）
-- 自动生成的API文档
+- Books CRUD operations (Create, Read, Update, Delete)
+- User management and authentication system
+- User rating functionality
+- Book recommendation system (popular, author-based, collaborative filtering)
+- Automatically generated API documentation
 
-## 技术栈
+## Technology Stack
 
-- **后端框架**: FastAPI
-- **数据库**: SQLite (默认) / PostgreSQL
+- **Backend Framework**: FastAPI
+- **Database**: SQLite (default) / PostgreSQL
 - **ORM**: SQLAlchemy
-- **数据验证**: Pydantic
-- **API文档**: Swagger UI, ReDoc
+- **Data Validation**: Pydantic
+- **API Documentation**: Swagger UI, ReDoc
 
-## 安装步骤
+## Installation Steps
 
-1. 克隆仓库
+1. Clone the repository
 
-2. 安装依赖
+2. Install dependencies
    ```bash
    pip install -r requirements.txt
    ```
 
-3. 导入测试数据
+3. Import test data
    ```bash
    python import_data.py
    ```
 
-4. 启动服务器
+4. Start the server
    ```bash
    uvicorn main:app --reload
    ```
 
-## 访问API
+## API Access
 
-- API根路径: http://localhost:8000
-- Swagger UI文档: http://localhost:8000/docs
-- ReDoc文档: http://localhost:8000/redoc
+- API root path: http://localhost:8000
+- Swagger UI documentation: http://localhost:8000/docs
+- ReDoc documentation: http://localhost:8000/redoc
 
-## API端点
+## API Endpoints
 
-### 书籍相关
-- `GET /api/books/` - 获取书籍列表
-- `POST /api/books/` - 创建新书籍
-- `GET /api/books/{book_id}` - 获取书籍详情
-- `PUT /api/books/{book_id}` - 更新书籍信息
-- `DELETE /api/books/{book_id}` - 删除书籍
+### Books
+- `GET /api/books/` - Get book list
+- `POST /api/books/` - Create new book
+- `GET /api/books/{book_id}` - Get book details
+- `PUT /api/books/{book_id}` - Update book information
+- `DELETE /api/books/{book_id}` - Delete book
 
-### 用户相关
-- `GET /api/users/` - 获取用户列表
-- `POST /api/users/` - 创建新用户
-- `GET /api/users/{user_id}` - 获取用户详情
-- `PUT /api/users/{user_id}` - 更新用户信息
-- `DELETE /api/users/{user_id}` - 删除用户
+### Users
+- `GET /api/users/` - Get user list
+- `POST /api/users/` - Create new user
+- `GET /api/users/{user_id}` - Get user details
+- `PUT /api/users/{user_id}` - Update user information
+- `DELETE /api/users/{user_id}` - Delete user
 
-### 评分相关
-- `GET /api/ratings/` - 获取评分列表
-- `POST /api/ratings/` - 创建新评分
-- `GET /api/ratings/{rating_id}` - 获取评分详情
-- `PUT /api/ratings/{rating_id}` - 更新评分
-- `DELETE /api/ratings/{rating_id}` - 删除评分
+### Ratings
+- `GET /api/ratings/` - Get rating list
+- `POST /api/ratings/` - Create new rating
+- `GET /api/ratings/{rating_id}` - Get rating details
+- `PUT /api/ratings/{rating_id}` - Update rating
+- `DELETE /api/ratings/{rating_id}` - Delete rating
 
-### 推荐相关
-- `GET /recommendations/popular` - 获取热门书籍推荐
-- `GET /recommendations/authors/{user_id}` - 基于作者推荐
-- `GET /recommendations/collaborative/{user_id}` - 协同过滤推荐
-- `GET /recommendations/hybrid/{user_id}` - 混合推荐
+### Recommendations
+- `GET /recommendations/popular` - Get popular book recommendations
+- `GET /recommendations/authors/{user_id}` - Author-based recommendations
+- `GET /recommendations/collaborative/{user_id}` - Collaborative filtering recommendations
+- `GET /recommendations/hybrid/{user_id}` - Hybrid recommendations
 
-## 测试数据
+## Test Data
 
-运行 `import_data.py` 脚本会自动创建示例数据，包括测试用户和书籍信息。
+Running the `import_data.py` script will automatically create sample data, including test users and book information.
 
-## 环境变量
+## Environment Variables
 
-可以通过 `.env` 文件配置以下环境变量：
+You can configure the following environment variables through a `.env` file:
 
-- `DATABASE_URL` - 数据库连接URL (默认: sqlite:///./books.db)
+- `DATABASE_URL` - Database connection URL (default: sqlite:///./books.db)
 
-## 项目结构
+## Project Structure
 
 ```
 .
-├── main.py              # 主应用文件
-├── import_data.py       # 数据导入脚本
-├── requirements.txt     # 依赖文件
-├── README.md            # 项目说明
-├── API_DOCUMENTATION.md # API详细文档
-├── TECHNICAL_REPORT.md   # 技术报告
-├── PRESENTATION_SLIDES.md # 演示文稿
-├── api/                 # API层
-│   ├── endpoints/       # 路由端点
-│   └── deps.py         # 依赖注入
-├── core/               # 核心配置
-│   ├── config.py       # 应用配置
-│   ├── security.py    # JWT安全
-│   └── exceptions.py   # 异常处理
-└── db/                  # 数据库层
-    ├── models/         # SQLAlchemy模型
+├── main.py              # Main application file
+├── import_data.py       # Data import script
+├── requirements.txt     # Dependencies file
+├── README.md            # Project description
+├── API_DOCUMENTATION.md # API detailed documentation
+├── TECHNICAL_REPORT.md   # Technical report
+├── PRESENTATION_SLIDES.md # Presentation slides
+├── api/                 # API layer
+│   ├── endpoints/       # Route endpoints
+│   └── deps.py         # Dependency injection
+├── core/               # Core configuration
+│   ├── config.py       # Application configuration
+│   ├── security.py    # JWT security
+│   └── exceptions.py   # Exception handling
+└── db/                  # Database layer
+    ├── models/         # SQLAlchemy models
     ├── schemas/        # Pydantic schemas
-    ├── base.py         # 数据库基类
-    ├── session.py      # 数据库会话
-    └── init_db.py      # 数据库初始化
+    ├── base.py         # Database base class
+    ├── session.py      # Database session
+    └── init_db.py      # Database initialization
 ```
 
-## 数据库表结构
+## Database Schema
 
-### books（书籍表）
+### books (Books Table)
 
-| 字段 | 类型 | 约束 | 含义 |
+| Field | Type | Constraint | Description |
 |------|------|------|------|
-| `id` | Integer | PK, 索引 | 书籍唯一标识符 |
-| `title` | String | 索引 | 书籍标题 |
-| `isbn` | String | **唯一** | 国际标准书号 |
-| `publication_year` | Integer | - | 出版年份 |
-| `cover_url` | String | - | 封面图片URL |
-| `language_code` | String | - | 语言代码 (如 en, en-US) |
-| `average_rating` | Float | 默认0.0 | 平均评分 |
-| `rating_count` | Integer | 默认0 | 评分次数 |
+| `id` | Integer | PK, Index | Book unique identifier |
+| `title` | String | Index | Book title |
+| `isbn` | String | **Unique** | International Standard Book Number |
+| `publication_year` | Integer | - | Publication year |
+| `cover_url` | String | - | Cover image URL |
+| `language_code` | String | - | Language code (e.g., en, en-US) |
+| `average_rating` | Float | Default 0.0 | Average rating |
+| `rating_count` | Integer | Default 0 | Number of ratings |
 
-### authors（作者表）
+### authors (Authors Table)
 
-| 字段 | 类型 | 约束 | 含义 |
+| Field | Type | Constraint | Description |
 |------|------|------|------|
-| `id` | Integer | PK, 索引 | 作者唯一标识符 |
-| `name` | String | 索引 | 作者姓名 |
+| `id` | Integer | PK, Index | Author unique identifier |
+| `name` | String | Index | Author name |
 
-### book_author（书籍-作者关联表）
+### book_author (Book-Author Association Table)
 
-| 字段 | 类型 | 约束 | 含义 |
+| Field | Type | Constraint | Description |
 |------|------|------|------|
-| `book_id` | Integer | PK, FK | 关联书籍ID |
-| `author_id` | Integer | PK, FK | 关联作者ID |
+| `book_id` | Integer | PK, FK | Associated book ID |
+| `author_id` | Integer | PK, FK | Associated author ID |
 
-### users（用户表）
+### users (Users Table)
 
-| 字段 | 类型 | 约束 | 含义 |
+| Field | Type | Constraint | Description |
 |------|------|------|------|
-| `id` | Integer | PK, 索引 | 用户唯一标识符 |
-| `username` | String | **唯一**, 索引 | 用户名 |
-| `email` | String | **唯一**, 索引 | 电子邮箱 |
-| `password_hash` | String | - | 密码哈希值 |
+| `id` | Integer | PK, Index | User unique identifier |
+| `username` | String | **Unique**, Index | Username |
+| `email` | String | **Unique**, Index | Email address |
+| `password_hash` | String | - | Password hash |
 
-### ratings（评分表）
+### ratings (Ratings Table)
 
-| 字段 | 类型 | 约束 | 含义 |
+| Field | Type | Constraint | Description |
 |------|------|------|------|
-| `id` | Integer | PK, 索引 | 评分记录ID |
-| `user_id` | Integer | FK | 评分用户ID |
-| `book_id` | Integer | FK | 被评书籍ID |
-| `rating` | Float | - | 评分值(1.0-5.0) |
+| `id` | Integer | PK, Index | Rating record ID |
+| `user_id` | Integer | FK | Rating user ID |
+| `book_id` | Integer | FK | Rated book ID |
+| `rating` | Float | - | Rating value (1.0-5.0) |
 
-## 数据来源
+## Data Source
 
-本项目使用 [GoodBooks-10K](https://github.com/zygmuntz/goodbooks-10k) 数据集，包含 10,000 本最受欢迎书籍的元数据、评分和标签信息。
+This project uses the [GoodBooks-10K](https://github.com/zygmuntz/goodbooks-10k) dataset, which contains metadata, ratings, and tag information for 10,000 popular books.
 
-运行以下命令导入数据：
+Run the following commands to import data:
 ```bash
-python import_data.py        # 导入用户
-python import_books_from_csv.py  # 导入书籍
-python generate_test_ratings.py  # 生成测试评分数据
+python import_data.py        # Import users
+python import_books_from_csv.py  # Import books
+python generate_test_ratings.py  # Generate test rating data
 ```

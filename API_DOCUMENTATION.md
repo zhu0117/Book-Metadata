@@ -48,9 +48,11 @@ The Book Metadata API is a RESTful API for managing book metadata, user authenti
 ### Authentication
 
 #### Register User
+
 ```
 POST /api/auth/register
 ```
+
 ```json
 {
   "username": "newuser",
@@ -60,12 +62,15 @@ POST /api/auth/register
 ```
 
 #### Login
+
 ```
 POST /api/auth/login
 ```
+
 Form data: `username`, `password`
 
 Response:
+
 ```json
 {
   "access_token": "eyJhbGc...",
@@ -76,10 +81,13 @@ Response:
 ### Books
 
 #### Get Books List
+
 ```
 GET /api/books/
 ```
+
 Parameters:
+
 - `page` (int, default: 1)
 - `limit` (int, default: 10)
 - `title` (string, optional): Filter by title
@@ -89,6 +97,7 @@ Parameters:
 - `sort_order` (string, "asc" or "desc")
 
 Response:
+
 ```json
 {
   "items": [...],
@@ -100,15 +109,19 @@ Response:
 ```
 
 #### Get Single Book
+
 ```
 GET /api/books/{book_id}
 ```
 
 #### Create Book (Requires Auth)
+
 ```
 POST /api/books/
 ```
+
 Header: `Authorization: Bearer <token>`
+
 ```json
 {
   "title": "Book Title",
@@ -122,10 +135,13 @@ Header: `Authorization: Bearer <token>`
 ```
 
 #### Update Book (Requires Auth)
+
 ```
 PUT /api/books/{book_id}
 ```
+
 Header: `Authorization: Bearer <token>`
+
 ```json
 {
   "title": "Updated Title"
@@ -133,19 +149,23 @@ Header: `Authorization: Bearer <token>`
 ```
 
 #### Delete Book (Requires Auth)
+
 ```
 DELETE /api/books/{book_id}
 ```
+
 Header: `Authorization: Bearer <token>`
 
 ### Users
 
 #### Get Users List
+
 ```
 GET /api/users/
 ```
 
 #### Get Single User
+
 ```
 GET /api/users/{user_id}
 ```
@@ -153,18 +173,24 @@ GET /api/users/{user_id}
 ### Ratings
 
 #### Get Ratings List
+
 ```
 GET /api/ratings/
 ```
+
 Parameters:
+
 - `user_id` (int, optional)
 - `book_id` (int, optional)
 
 #### Create Rating (Requires Auth)
+
 ```
 POST /api/ratings/
 ```
+
 Header: `Authorization: Bearer <token>`
+
 ```json
 {
   "book_id": 1,
@@ -175,103 +201,120 @@ Header: `Authorization: Bearer <token>`
 ### Recommendations
 
 #### Get Popular Books
+
 ```
 GET /recommendations/popular
 ```
+
 Parameters:
+
 - `limit` (int, default: 10)
 - `min_rating_count` (int, default: 3)
 
 #### Get Author-Based Recommendations
+
 ```
 GET /recommendations/authors/{user_id}
 ```
+
 Parameters:
+
 - `user_id` (int, required)
 - `limit` (int, default: 10)
 
 #### Get Collaborative Filtering Recommendations
+
 ```
 GET /recommendations/collaborative/{user_id}
 ```
+
 Parameters:
+
 - `user_id` (int, required)
 - `limit` (int, default: 10)
 
 #### Get Hybrid Recommendations
+
 ```
 GET /recommendations/hybrid/{user_id}
 ```
+
 Parameters:
+
 - `user_id` (int, required)
 - `limit` (int, default: 10)
+
+Combines collaborative filtering, author-based, and popular books recommendations. Priority order: collaborative filtering > author-based > popular books.
 
 ## Data Models
 
 ### Book
 
-| Field | Type | Description |
-|-------|------|-------------|
-| id | Integer | Primary key |
-| title | String | Book title |
-| isbn | String | ISBN (unique) |
-| publication_year | Integer | Publication year |
-| cover_url | String | Cover image URL |
-| language_code | String | Language code (e.g., en, en-US) |
-| average_rating | Float | Average rating |
-| rating_count | Integer | Number of ratings |
-| authors | List[Author] | List of authors |
+| Field             | Type          | Description                     |
+| ----------------- | ------------- | ------------------------------- |
+| id                | Integer       | Primary key                     |
+| title             | String        | Book title                      |
+| isbn              | String        | ISBN (unique)                   |
+| publication\_year | Integer       | Publication year                |
+| cover\_url        | String        | Cover image URL                 |
+| language\_code    | String        | Language code (e.g., en, en-US) |
+| average\_rating   | Float         | Average rating                  |
+| rating\_count     | Integer       | Number of ratings               |
+| authors           | List\[Author] | List of authors                 |
 
 ### Author
 
-| Field | Type | Description |
-|-------|------|-------------|
-| id | Integer | Primary key |
-| name | String | Author name |
+| Field | Type    | Description |
+| ----- | ------- | ----------- |
+| id    | Integer | Primary key |
+| name  | String  | Author name |
 
 ### User
 
-| Field | Type | Description |
-|-------|------|-------------|
-| id | Integer | Primary key |
-| username | String | Unique username |
-| email | String | Unique email |
-| password_hash | String | Hashed password |
+| Field          | Type    | Description     |
+| -------------- | ------- | --------------- |
+| id             | Integer | Primary key     |
+| username       | String  | Unique username |
+| email          | String  | Unique email    |
+| password\_hash | String  | Hashed password |
 
 ### Rating
 
-| Field | Type | Description |
-|-------|------|-------------|
-| id | Integer | Primary key |
-| user_id | Integer | FK to User |
-| book_id | Integer | FK to Book |
-| rating | Float | Rating (1-5) |
+| Field    | Type    | Description  |
+| -------- | ------- | ------------ |
+| id       | Integer | Primary key  |
+| user\_id | Integer | FK to User   |
+| book\_id | Integer | FK to Book   |
+| rating   | Float   | Rating (1-5) |
 
 ## Error Handling
 
-| Status Code | Description |
-|-------------|-------------|
-| 400 | Bad request |
-| 401 | Not authenticated |
-| 404 | Resource not found |
-| 409 | Conflict (e.g., duplicate ISBN) |
-| 500 | Internal server error |
+| Status Code | Description                     |
+| ----------- | ------------------------------- |
+| 400         | Bad request                     |
+| 401         | Not authenticated               |
+| 404         | Resource not found              |
+| 409         | Conflict (e.g., duplicate ISBN) |
+| 500         | Internal server error           |
 
 ## Deployment
 
 ### Local Development
+
 ```bash
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
 ### Production
+
 ```bash
 uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4
 ```
 
 ### Environment Variables
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| DATABASE_URL | Database connection URL | sqlite:///./books.db |
+| Variable      | Description             | Default              |
+| ------------- | ----------------------- | -------------------- |
+| DATABASE\_URL | Database connection URL | sqlite:///./books.db |
+

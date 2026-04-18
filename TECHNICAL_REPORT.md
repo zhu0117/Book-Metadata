@@ -192,7 +192,13 @@ Where:
 
 ### 8.3 Hybrid Approach
 
-The hybrid recommendation combines popular books and author-based recommendations to provide diverse, high-quality suggestions.
+The hybrid recommendation combines multiple strategies to provide diverse, high-quality suggestions:
+
+1. **Collaborative Filtering** (highest priority): Books recommended by similar users
+2. **Author-Based** (medium priority): Books by authors the user has rated highly
+3. **Popular Books** (fallback): Highly-rated books with sufficient ratings
+
+This approach ensures both personalization and discovery of new content.
 
 ## 9. Future Development
 
@@ -210,14 +216,54 @@ The hybrid recommendation combines popular books and author-based recommendation
 3. Implement advanced search
 4. Add social features
 
-## 10. GenAI Usage Declaration
+## 10. Data Sources
 
-### 10.1 Tools Used
+### 10.1 Dataset Information
+
+The project uses the **GoodBooks-10K** dataset, which contains metadata and ratings for 10,000 popular books.
+
+**Dataset Details:**
+- **Source**: [GoodBooks-10K on GitHub](https://github.com/zygmuntz/goodbooks-10k)
+- **Content**: 10,000 books with metadata, ratings, and tags
+- **Format**: CSV files
+- **Size**: Approximately 200MB
+
+### 10.2 License Information
+
+**License Type**: MIT License
+
+**Permissions**: 
+- ✅ Commercial use
+- ✅ Modification
+- ✅ Distribution
+- ✅ Private use
+
+**Conditions**: 
+- Include copyright notice
+- Include license notice
+
+**Limitations**: 
+- No liability
+- No warranty
+
+**License Text**: The MIT License is a permissive license that is compatible with academic and commercial use. It allows unrestricted use, modification, and distribution of the dataset.
+
+### 10.3 Academic Use Compliance
+
+The GoodBooks-10K dataset is fully compliant for academic purposes because:
+- It is released under the MIT License, which permits academic use
+- It contains publicly available book metadata
+- It does not include any personally identifiable information
+- It is properly cited in this technical report
+
+## 11. GenAI Usage Declaration
+
+### 11.1 Tools Used
 
 - **Microsoft Copilot**: Used for dataset analysis, data model design assistance, and API framework guidance
 - **ChatGPT**: Used for technical documentation writing and best practice recommendations
 
-### 10.2 Usage Scenarios
+### 11.2 Usage Scenarios
 
 1. **Dataset Search and Analysis**:
    - Assisted in finding and analyzing the GoodBooks-10K dataset
@@ -239,7 +285,7 @@ The hybrid recommendation combines popular books and author-based recommendation
    - Provided information on Pearson correlation coefficient implementation
    - Assisted with understanding JWT authentication concepts
 
-### 10.3 Methodological Approach
+### 11.3 Methodological Approach
 
 GenAI was used as a supplementary tool following a structured methodology:
 
@@ -249,7 +295,7 @@ GenAI was used as a supplementary tool following a structured methodology:
 4. **Implementation**: Applied insights to develop custom solutions
 5. **Review**: Thoroughly tested and validated all implementations
 
-### 10.4 Benefits and Limitations
+### 11.4 Benefits and Limitations
 
 **Benefits**:
 - Accelerated research and learning process
@@ -262,7 +308,7 @@ GenAI was used as a supplementary tool following a structured methodology:
 - Needed context-specific adjustments for project requirements
 - Sometimes provided generic solutions that required customization
 
-### 10.5 Ethical Considerations
+### 11.5 Ethical Considerations
 
 All GenAI-generated content was used responsibly:
 - Used as a research and learning tool, not a replacement for original work
@@ -270,7 +316,7 @@ All GenAI-generated content was used responsibly:
 - Maintained academic integrity by ensuring original thought and implementation
 - Properly cited all external sources, including AI-assisted research
 
-## 11. Conclusion
+## 12. Conclusion
 
 The Book Metadata API provides a solid foundation for book management with:
 - Clean, modular architecture
@@ -279,8 +325,10 @@ The Book Metadata API provides a solid foundation for book management with:
 - Extensible design for future features
 - [x] Book recommendation system with multiple algorithms
 
-## 12. References
+## 13. References
 
 - FastAPI: https://fastapi.tiangolo.com/
 - SQLAlchemy: https://docs.sqlalchemy.org/
 - Pydantic: https://docs.pydantic.dev/
+- GoodBooks-10K Dataset: https://github.com/zygmuntz/goodbooks-10k
+- MIT License: https://opensource.org/licenses/MIT
