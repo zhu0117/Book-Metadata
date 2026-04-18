@@ -26,7 +26,6 @@ books.db
 Thumbs.db
 
 # Dependencies
-requirements.txt
 
 # Documentation
 *.pdf
